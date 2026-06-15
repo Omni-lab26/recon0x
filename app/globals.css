@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════════
+   DARK MODE (default) — 紫ネオン × ダーク
+   ══════════════════════════════════════════════════════════════ */
+:root,
+:root.theme-dark {
+  --bg: #050407;
+  --bg2: #0A090D;
+  --surf: rgba(255, 255, 255, 0.025);
+  --surf2: rgba(255, 255, 255, 0.04);
+  --surf3: rgba(255, 255, 255, 0.06);
+  --bd: rgba(139, 92, 246, 0.1);
+  --bd2: rgba(139, 92, 246, 0.18);
+  --bd3: rgba(139, 92, 246, 0.26);
+  --t1: #F4F4F5;
+  --t2: #A1A1AA;
+  --t3: #52525B;
+  --t4: #27272A;
+  --g: #22C55E;
+  --c: #00D4FF;
+  --a: #F59E0B;
+  --r: #EF4444;
+  --p: #A855F7;
+  --pink: #EC4899;
+
+  --sidebar-bg: rgba(5, 4, 7, 0.92);
+  --topbar-bg: rgba(5, 4, 7, 0.85);
+  --terminal-bg: #020203;
+  --terminal-text: #F4F4F5;
+  --code-bg: #0A090D;
+
+  --orb1: rgba(139, 92, 246, 0.12);
+  --orb2: rgba(168, 85, 247, 0.10);
+  --orb-tint: rgba(34, 197, 94, 0.04);
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(168, 85, 247, 0.2);
+
+  --font-sans: -apple-system, "SF Pro Display", "Inter", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CYBER MODE — Matrix風 緑高コントラスト
+   ══════════════════════════════════════════════════════════════ */
+:root.theme-cyber {
+  --bg: #000505;
+  --bg2: #001A0D;
+  --surf: rgba(34, 197, 94, 0.04);
+  --surf2: rgba(34, 197, 94, 0.07);
+  --surf3: rgba(34, 197, 94, 0.1);
+  --bd: rgba(34, 197, 94, 0.18);
+  --bd2: rgba(34, 197, 94, 0.32);
+  --bd3: rgba(34, 197, 94, 0.45);
+  --t1: #E7FFE7;
+  --t2: #86E8A6;
+  --t3: #3F8855;
+  --t4: #1B3A23;
+  --g: #00FF88;
+  --c: #00FFFF;
+  --a: #FFAA00;
+  --r: #FF3355;
+  --p: #BB66FF;
+  --pink: #FF44AA;
+
+  --sidebar-bg: rgba(0, 8, 4, 0.94);
+  --topbar-bg: rgba(0, 8, 4, 0.88);
+  --terminal-bg: #000503;
+  --terminal-text: #00FF88;
+  --code-bg: #001005;
+
+  --orb1: rgba(0, 255, 136, 0.1);
+  --orb2: rgba(187, 102, 255, 0.06);
+  --orb-tint: rgba(0, 255, 255, 0.04);
+
+  --shadow-glow: 0 0 24px rgba(0, 255, 136, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE — 紫アクセント × 明るく上品
+   • 透明系を「実体ある白」に
+   • シャドウで深さを表現(グラスモーフィズム不可のため)
+   • ターミナル・コードブロックは常にダーク
+   ══════════════════════════════════════════════════════════════ */
+:root.theme-light {
+  --bg: #F8F7FC;
+  --bg2: #F1EEF8;
+  --surf: #FFFFFF;
+  --surf2: #FAFAFC;
+  --surf3: #F4F2F8;
+  --bd: rgba(124, 58, 237, 0.16);
+  --bd2: rgba(124, 58, 237, 0.28);
+  --bd3: rgba(124, 58, 237, 0.4);
+  --t1: #18181B;
+  --t2: #3F3F46;
+  --t3: #71717A;
+  --t4: #A1A1AA;
+  --g: #15803D;
+  --c: #0E7490;
+  --a: #B45309;
+  --r: #B91C1C;
+  --p: #7C3AED;
+  --pink: #BE185D;
+
+  /* サイドバー/Topbar はライトモードでも上品に */
+  --sidebar-bg: rgba(255, 255, 255, 0.94);
+  --topbar-bg: rgba(255, 255, 255, 0.85);
+
+  /* ターミナル・コードブロックは常にダーク */
+  --terminal-bg: #0A090D;
+  --terminal-text: #F4F4F5;
+  --code-bg: #0A090D;
+
+  --orb1: rgba(168, 85, 247, 0.08);
+  --orb2: rgba(124, 58, 237, 0.06);
+  --orb-tint: rgba(22, 163, 74, 0.03);
+
+  --shadow-sm: 0 1px 2px rgba(15, 11, 25, 0.04), 0 1px 3px rgba(15, 11, 25, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 11, 25, 0.06), 0 2px 4px rgba(15, 11, 25, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 11, 25, 0.1), 0 4px 8px rgba(15, 11, 25, 0.06);
+  --shadow-glow: 0 0 24px rgba(124, 58, 237, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 200ms ease, color 200ms ease;
+  /* モバイル:横スクロール完全禁止 */
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body { min-height: 100vh; position: relative; }
+
+/* iOS Safari の自動ズーム防止 — input 系を最低 16px に */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* タップターゲット最低 44px(WCAG 推奨) */
+@media (hover: none) and (pointer: coarse) {
+  button, a[role="button"], [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* インラインの小ボタン例外(アイコンのみ等) */
+  button.tap-sm, a[role="button"].tap-sm {
+    min-height: 32px;
+    min-width: 32px;
+  }
+}
+
+/* セーフエリア対応 — iPhone notch */
+@supports (padding: max(0px)) {
+  .safe-px { padding-left: max(env(safe-area-inset-left), 1rem); padding-right: max(env(safe-area-inset-right), 1rem); }
+  .safe-pt { padding-top: max(env(safe-area-inset-top), 0px); }
+  .safe-pb { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+}
+
+/* オーブ */
+body::before {
+  content: '';
+  position: fixed;
+  width: 60vw;
+  height: 60vw;
+  max-width: 700px;
+  max-height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--orb1) 0%, var(--orb-tint) 50%, transparent 70%);
+  top: -240px;
+  right: -160px;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(56px);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 50vw;
+  height: 50vw;
+  max-width: 580px;
+  max-height: 580px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--orb2) 0%, transparent 70%);
+  bottom: 100px;
+  left: 200px;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(64px);
+}
+
+/* ライトモード:背景の繊細なドット */
+:root.theme-light body {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.05) 1px, transparent 0);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+/* ライトモード:全カードにシャドウを自動付与 */
+:root.theme-light .bg-surf,
+:root.theme-light [class*="bg-surf"],
+:root.theme-light .glass {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ライトモード:ホバー時にシャドウ強化 */
+:root.theme-light .bg-surf:hover,
+:root.theme-light [class*="bg-surf"]:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139,92,246,0.35); }
+:root.theme-light ::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.18); }
+:root.theme-light ::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.32); }
+:root.theme-cyber ::-webkit-scrollbar-thumb { background: rgba(0,255,136,0.22); }
+
+/* Selection */
+::selection { background: rgba(168,85,247,0.3); color: var(--t1); }
+:root.theme-light ::selection { background: rgba(124,58,237,0.22); color: var(--t1); }
+:root.theme-cyber ::selection { background: rgba(0,255,136,0.3); color: var(--t1); }
+
+/* Focus */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--p);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes shimmer-bar { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes step-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(168,85,247,0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(168,85,247,0); }
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes xp-earn {
+  0% { opacity: 0; transform: translateY(-10px) scale(0.9); }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  85% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-6px) scale(0.95); }
+}
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(8deg); }
+  50% { transform: rotate(-4deg); }
+}
+@keyframes purple-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(168,85,247,0.4); }
+  50% { box-shadow: 0 0 20px rgba(168,85,247,0.8), 0 0 40px rgba(168,85,247,0.3); }
+}
+
+.animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+.animate-shimmer { background-size: 200% 100%; animation: shimmer-bar 4s linear infinite; }
+.animate-step { animation: step-pulse 2s ease-in-out infinite; }
+.animate-live { animation: live-pulse 2s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 400ms cubic-bezier(0.16,1,0.3,1) backwards; }
+.animate-wave { animation: wave 2s ease-in-out infinite; transform-origin: 70% 70%; display: inline-block; }
+.animate-purple-pulse { animation: purple-pulse 2s ease-in-out infinite; }
+
+.delay-60 { animation-delay: 60ms; }
+.delay-120 { animation-delay: 120ms; }
+.delay-180 { animation-delay: 180ms; }
+.delay-240 { animation-delay: 240ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+.glass {
+  background: var(--surf);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.glass-h {
+  background: var(--surf2);
+  border: 1px solid var(--bd2);
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.ti { font-size: 1em; line-height: 1; vertical-align: middle; }
+
+.btn-shimmer { position: relative; overflow: hidden; }
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 600ms;
+  pointer-events: none;
+}
+.btn-shimmer:hover::after { transform: translateX(100%); }
+
+.glow-purple {
+  box-shadow: 0 0 12px rgba(168,85,247,0.4), 0 0 24px rgba(168,85,247,0.15);
+}
+.glow-green {
+  box-shadow: 0 0 12px rgba(34,197,94,0.4), 0 0 24px rgba(34,197,94,0.15);
+}
+
+/* ── ライトモード:ブランド色を可読性高い色に上書き ── */
+:root.theme-light .text-brand-green { color: #15803D; }
+:root.theme-light .text-brand-cyan { color: #0E7490; }
+:root.theme-light .text-brand-amber { color: #B45309; }
+:root.theme-light .text-brand-red { color: #B91C1C; }
+:root.theme-light .text-brand-purple { color: #6D28D9; }
+:root.theme-light .text-brand-pink { color: #BE185D; }
+
+/* サイバーモードでブランド色を明るく */
+:root.theme-cyber .text-brand-green { color: #00FF88; }
+:root.theme-cyber .text-brand-cyan { color: #00FFFF; }
+:root.theme-cyber .text-brand-amber { color: #FFAA00; }
+:root.theme-cyber .text-brand-red { color: #FF3355; }
+:root.theme-cyber .text-brand-purple { color: #BB66FF; }
+:root.theme-cyber .text-brand-pink { color: #FF44AA; }
