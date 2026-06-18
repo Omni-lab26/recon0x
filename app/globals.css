@@ -430,71 +430,47 @@ svg[id^="mermaid"] {
   background: transparent !important;
 }
 
-/* ── highlight.js テーマ (Tokyo Night) ── */
-.hljs { background: transparent; color: #a9b1d6; }
-.hljs-keyword { color: #bb9af7; }
-.hljs-built_in { color: #7dcfff; }
-.hljs-type { color: #7dcfff; }
-.hljs-literal { color: #ff9e64; }
-.hljs-number { color: #ff9e64; }
-.hljs-string { color: #9ece6a; }
-.hljs-comment { color: #565f89; font-style: italic; }
-.hljs-function { color: #7aa2f7; }
-.hljs-title { color: #7aa2f7; }
-.hljs-params { color: #e0af68; }
-.hljs-attr { color: #73daca; }
-.hljs-variable { color: #c0caf5; }
-.hljs-operator { color: #89ddff; }
-.hljs-punctuation { color: #89ddff; }
-.hljs-tag { color: #f7768e; }
-.hljs-name { color: #f7768e; }
-.hljs-property { color: #73daca; }
-.hljs-meta { color: #7dcfff; }
-.hljs-deletion { color: #f7768e; }
-.hljs-addition { color: #9ece6a; }
+/* ── コードブロック共通 ── */
+.article-body pre {
+  background: #0a090d !important;
+  color: #c0caf5 !important;
+  padding: 1rem !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  margin: 1.25rem 0 !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+}
+.article-body pre code {
+  background: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  padding: 0 !important;
+  font-family: var(--font-mono) !important;
+  font-size: inherit !important;
+  display: block;
+}
 
-/* ── highlight.js テーマ (Tokyo Night) ── */
-.hljs { background: transparent; color: #a9b1d6; }
-.hljs-keyword { color: #bb9af7; }
-.hljs-built_in { color: #7dcfff; }
-.hljs-type { color: #7dcfff; }
-.hljs-literal { color: #ff9e64; }
-.hljs-number { color: #ff9e64; }
-.hljs-string { color: #9ece6a; }
-.hljs-comment { color: #565f89; font-style: italic; }
-.hljs-function { color: #7aa2f7; }
-.hljs-title { color: #7aa2f7; }
-.hljs-params { color: #e0af68; }
-.hljs-attr { color: #73daca; }
-.hljs-variable { color: #c0caf5; }
-.hljs-operator { color: #89ddff; }
-.hljs-punctuation { color: #89ddff; }
-.hljs-tag { color: #f7768e; }
-.hljs-name { color: #f7768e; }
-.hljs-property { color: #73daca; }
-.hljs-meta { color: #7dcfff; }
-.hljs-deletion { color: #f7768e; }
-.hljs-addition { color: #9ece6a; }
-
-/* ── highlight.js テーマ (Tokyo Night) ── */
-.hljs { background: transparent; color: #a9b1d6; }
-.hljs-keyword { color: #bb9af7; }
-.hljs-built_in { color: #7dcfff; }
-.hljs-type { color: #7dcfff; }
-.hljs-literal { color: #ff9e64; }
-.hljs-number { color: #ff9e64; }
-.hljs-string { color: #9ece6a; }
-.hljs-comment { color: #565f89; font-style: italic; }
-.hljs-function { color: #7aa2f7; }
-.hljs-title { color: #7aa2f7; }
-.hljs-params { color: #e0af68; }
-.hljs-attr { color: #73daca; }
-.hljs-variable { color: #c0caf5; }
-.hljs-operator { color: #89ddff; }
-.hljs-punctuation { color: #89ddff; }
-.hljs-tag { color: #f7768e; }
-.hljs-name { color: #f7768e; }
-.hljs-property { color: #73daca; }
-.hljs-meta { color: #7dcfff; }
-.hljs-deletion { color: #f7768e; }
-.hljs-addition { color: #9ece6a; }
+/* ── highlight.js テーマ Tokyo Night ── */
+.hljs { background: transparent !important; color: #c0caf5 !important; }
+.hljs-keyword { color: #bb9af7 !important; }
+.hljs-built_in { color: #7dcfff !important; }
+.hljs-type { color: #7dcfff !important; }
+.hljs-literal { color: #ff9e64 !important; }
+.hljs-number { color: #ff9e64 !important; }
+.hljs-string { color: #9ece6a !important; }
+.hljs-comment { color: #565f89 !important; font-style: italic; }
+.hljs-function { color: #7aa2f7 !important; }
+.hljs-title { color: #7aa2f7 !important; }
+.hljs-params { color: #e0af68 !important; }
+.hljs-attr { color: #73daca !important; }
+.hljs-variable { color: #c0caf5 !important; }
+.hljs-operator { color: #89ddff !important; }
+.hljs-punctuation { color: #89ddff !important; }
+.hljs-tag { color: #f7768e !important; }
+.hljs-name { color: #f7768e !important; }
+.hljs-property { color: #73daca !important; }
+.hljs-meta { color: #7dcfff !important; }
+.hljs-deletion { color: #f7768e !important; }
+.hljs-addition { color: #9ece6a !important; }

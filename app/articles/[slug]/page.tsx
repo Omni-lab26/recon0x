@@ -11,9 +11,7 @@ import {
   IconBookmark,
 } from "@tabler/icons-react";
 
-// ── MDX 内で使えるカスタムコンポーネント ──────────────
 const MDX_COMPONENTS = {
-  // コードブロック — ダークテーマ固定
   pre: (props: React.HTMLAttributes<HTMLPreElement> & { children?: React.ReactElement }) => {
     const child = props.children as React.ReactElement<{ className?: string; children?: string }>;
     const className = child?.props?.className ?? "";
@@ -21,38 +19,23 @@ const MDX_COMPONENTS = {
       const chart = child?.props?.children ?? "";
       return <MermaidChart chart={chart} />;
     }
-    return (
-      <pre
-        {...props}
-        className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
-        style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)" }}
-      />
-    );
+    return <pre {...props} />;
   },
   code: ({ children, className, ...props }: React.HTMLAttributes<HTMLElement>) => {
-    const isBlock = !className;
-    if (isBlock) {
+    const isInline = !className;
+    if (isInline) {
       return (
         <code
-          className={"font-mono text-[13px] leading-[1.7] " + (className ?? "")}
-          style={{ background: "transparent", color: "inherit" }}
+          className="font-mono text-[12.5px] px-1.5 py-0.5 rounded break-all"
+          style={{ background: "var(--surf2)", color: "var(--p)", border: "1px solid var(--bd)" }}
           {...props}
         >
           {children}
         </code>
       );
     }
-    return (
-      <code
-        className="font-mono text-[12.5px] px-1.5 py-0.5 rounded break-all"
-        style={{ background: "rgba(134,232,166,0.08)", color: "#86E8A6", border: "1px solid rgba(134,232,166,0.25)" }}
-        {...props}
-      >
-        {children}
-      </code>
-    );
+    return <code className={className} {...props}>{children}</code>;
   },
-  // 見出し
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 {...props} className="text-[28px] font-bold mt-10 mb-4 tracking-[-0.02em]" />
   ),
@@ -62,11 +45,9 @@ const MDX_COMPONENTS = {
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3 {...props} className="text-[18px] font-bold mt-6 mb-2" />
   ),
-  // 本文
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p {...props} className="text-[15px] text-t2 leading-[1.85] mb-4 break-words" />
   ),
-  // リスト
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul {...props} className="list-disc pl-5 space-y-1.5 mb-4 text-[14.5px] text-t2" />
   ),
@@ -76,7 +57,6 @@ const MDX_COMPONENTS = {
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li {...props} className="leading-relaxed break-words" />
   ),
-  // テーブル
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="overflow-x-auto my-5 rounded-lg border" style={{ borderColor: "var(--bd)" }}>
       <table {...props} className="w-full text-[13.5px]" />
@@ -88,7 +68,6 @@ const MDX_COMPONENTS = {
   td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td {...props} className="px-3 py-2.5 text-t2 border-t break-words" style={{ borderColor: "var(--bd)" }} />
   ),
-  // 引用
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       {...props}
@@ -96,19 +75,9 @@ const MDX_COMPONENTS = {
       style={{ borderColor: "var(--a)", background: "rgba(245,158,11,0.06)" }}
     />
   ),
-  // 水平線
   hr: () => (
     <hr className="my-8" style={{ borderColor: "var(--bd)" }} />
   ),
-  // インラインコード
-  inlineCode: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      {...props}
-      className="font-mono text-[12.5px] px-1.5 py-0.5 rounded break-all"
-      style={{ background: "var(--surf2)", color: "var(--c)", border: "1px solid var(--bd)" }}
-    />
-  ),
-  // 画像 — ./images/ 相対パスは /articles/{slug}/ に変換(slug は後で注入)
   img: ({ src, alt }: { src?: string; alt?: string }) => {
     const resolvedSrc = (src ?? "").replace(/^\.\/images\//, "");
     return (
@@ -121,22 +90,19 @@ const MDX_COMPONENTS = {
       />
     );
   },
-  // リンク
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a
+    
       {...props}
       className="text-brand-purple underline underline-offset-2 hover:opacity-80 transition break-all"
       target={props.href?.startsWith("http") ? "_blank" : undefined}
       rel={props.href?.startsWith("http") ? "noopener noreferrer" : undefined}
     />
   ),
-  // 強調
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
     <strong {...props} className="font-bold text-t1" />
   ),
 };
 
-// ── ページ ────────────────────────────────────────────
 export default async function ArticleDetailPage({
   params,
 }: {
@@ -158,7 +124,6 @@ export default async function ArticleDetailPage({
 
   return (
     <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
-      {/* 戻る */}
       <Link
         href="/articles"
         className="inline-flex items-center gap-1.5 text-[13px] text-t2 no-underline mb-6 hover:text-t1 transition"
@@ -167,7 +132,6 @@ export default async function ArticleDetailPage({
         記事一覧
       </Link>
 
-      {/* ヒーロー画像 */}
       {article.heroImage && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -180,7 +144,6 @@ export default async function ArticleDetailPage({
         />
       )}
 
-      {/* ヘッダ */}
       <header className="mb-8">
         <div className="flex items-center gap-2 mb-3 flex-wrap">
           <span
@@ -229,40 +192,23 @@ export default async function ArticleDetailPage({
           <button
             aria-label="ブックマーク"
             className="ml-auto w-9 h-9 rounded-lg flex items-center justify-center text-t3 hover:text-brand-amber transition"
-            style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)" }}
+            style={{ background: "var(--surf2)", border: "1px solid var(--bd)" }}
           >
             <IconBookmark size={15} stroke={1.6} />
           </button>
         </div>
       </header>
 
-      {/* 区切り */}
       <hr className="mb-8" style={{ borderColor: "var(--bd)" }} />
 
-      {/* MDX 本文 */}
       <div className="article-body">
         <MDXRemote
           source={article.content.replace(/\/articles\/__SLUG__\//g, `/articles/${article.slug}/`)}
           components={MDX_COMPONENTS}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [rehypeHighlight],
-            },
-          }}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [rehypeHighlight],
-            },
-          }}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [rehypeHighlight],
-            },
-          }}
+          options={{ mdxOptions: { rehypePlugins: [rehypeHighlight] } }}
         />
       </div>
 
-      {/* 前提知識 */}
       {article.prerequisites && article.prerequisites.length > 0 && (
         <div
           className="mt-10 rounded-xl border p-4"
