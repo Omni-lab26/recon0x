@@ -91,7 +91,7 @@ const MDX_COMPONENTS = {
     );
   },
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    
+    <a
       {...props}
       className="text-brand-purple underline underline-offset-2 hover:opacity-80 transition break-all"
       target={props.href?.startsWith("http") ? "_blank" : undefined}
