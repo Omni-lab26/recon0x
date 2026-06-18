@@ -46,10 +46,10 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* ROW 1: Hero with terminal (cols 1-8) + Install (cols 9-12) */}
         <div
-          className="col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
+          className="md:col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg,rgba(0,212,255,0.04),transparent 60%), var(--surf)",
@@ -101,7 +101,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <MiniStat label="作者" value={tool.id === "nmap" ? "G. Lyon" : "—"} color="var(--t1)" />
             <MiniStat label="初版" value="1997" color="var(--c)" />
             <MiniStat label="最新" value="2026.1" color="var(--g)" />
@@ -115,7 +115,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           icon={<IconTerminal2 size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="space-y-1.5">
             {[
@@ -148,7 +148,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           icon={<IconActivity size={13} stroke={1.8} />}
           iconBg="rgba(139,92,246,0.1)"
           iconColor="var(--p)"
-          className="col-span-5"
+          className="md:col-span-5"
         >
           <div className="space-y-1.5">
             {[
@@ -182,7 +182,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           title="このツールで学べる演習"
           icon="🧪"
           iconBg="rgba(245,158,11,0.1)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="space-y-1.5">
             {[
@@ -219,7 +219,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           icon={<IconRoute size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="space-y-1.5">
             {[
@@ -261,9 +261,9 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           title="一緒に使うとよい"
           icon="🔄"
           iconBg="rgba(0,212,255,0.1)"
-          className="col-span-5"
+          className="md:col-span-5"
         >
-          <div className="grid grid-cols-2 gap-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {MOCK_TOOLS.filter((t) => t.id !== tool.id)
               .slice(0, 4)
               .map((t) => (
@@ -291,7 +291,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           icon={<IconStar size={13} stroke={1.8} />}
           iconBg="rgba(245,158,11,0.1)"
           iconColor="var(--a)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="space-y-1.5">
             {[
@@ -318,7 +318,7 @@ export default function ToolDetailPage({ params }: { params: { id: string } }) {
           icon={<IconBookmark size={13} stroke={1.8} />}
           iconBg="rgba(139,92,246,0.1)"
           iconColor="var(--p)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="space-y-1.5">
             <button className="w-full px-3 py-2 bg-surf2 border border-bd rounded-md text-[11px] text-t1 hover:bg-surf3 hover:border-bd2 transition text-left flex items-center gap-2">

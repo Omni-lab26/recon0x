@@ -1,306 +1,173 @@
-import { OpsHeader } from "@/components/ui/OpsHeader";
-import { Panel } from "@/components/ui/Panel";
-import { LivePill } from "@/components/home/LivePill";
 import { MOCK_LEADERS } from "@/lib/mock-data";
-import {
-  IconTrophy,
-  IconChartBar,
-  IconUsers,
-} from "@tabler/icons-react";
+
+const MEDAL: Record<number, string> = { 1: "🥇", 2: "🥈", 3: "🥉" };
 
 export default function LeaderboardPage() {
-  const top3 = MOCK_LEADERS.slice(0, 3);
   return (
-    <div className="max-w-[1400px] mx-auto">
-      <OpsHeader
-        eyebrow="GLOBAL LEADERBOARD · ALL-TIME"
-        title={<>トップハンターたち。</>}
-        description="グローバル · 月間 · 週間ランキング。XP · 解答数 · 連続日数で算出。"
-        live={{ label: "8,420 USERS · 234 ONLINE" }}
-        stats={[
-          { label: "総ユーザー", value: "8,420" },
-          { label: "オンライン", value: "234", color: "var(--g)" },
-          { label: "今月の昇格", value: "47" },
-          { label: "今週の解答", value: "1,892" },
-          { label: "あなたの順位", value: "#248", color: "var(--c)" },
-          { label: "次のランクまで", value: "+2,460 XP" },
-        ]}
-      />
-
-      <div className="grid grid-cols-12 gap-3">
-        {/* Filter */}
-        <Panel className="col-span-12" hover={false}>
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-mono text-[9.5px] text-t3 mr-2">PERIOD:</span>
-            {["全期間", "月間", "週間", "今日"].map((p, i) => (
-              <button
-                key={p}
-                className="px-3 py-1.5 rounded-full font-medium text-[11px] cursor-pointer border"
-                style={
-                  i === 0
-                    ? {
-                        background: "rgba(34,197,94,0.08)",
-                        borderColor: "rgba(34,197,94,0.25)",
-                        color: "var(--g)",
-                      }
-                    : {
-                        background: "var(--surf)",
-                        borderColor: "var(--bd)",
-                        color: "var(--t3)",
-                      }
-                }
-              >
-                {p}
-              </button>
-            ))}
-            <div className="w-px h-5 bg-bd mx-2" />
-            <span className="font-mono text-[9.5px] text-t3 mr-1">METRIC:</span>
-            {["XP 合計", "解答数", "連続日数", "First Blood"].map((m, i) => (
-              <button
-                key={m}
-                className="px-3 py-1.5 rounded-full font-medium text-[11px] cursor-pointer border"
-                style={
-                  i === 0
-                    ? {
-                        background: "rgba(0,212,255,0.08)",
-                        borderColor: "rgba(0,212,255,0.25)",
-                        color: "var(--c)",
-                      }
-                    : {
-                        background: "var(--surf)",
-                        borderColor: "var(--bd)",
-                        color: "var(--t3)",
-                      }
-                }
-              >
-                {m}
-              </button>
-            ))}
-          </div>
-        </Panel>
-
-        {/* Podium (cols 1-8) */}
-        <Panel
-          eyebrow="表彰台"
-          title="トップ 3 ハンター"
-          icon={<IconTrophy size={13} stroke={1.8} />}
-          iconBg="rgba(245,158,11,0.1)"
-          iconColor="var(--a)"
-          className="col-span-8"
-        >
-          <div className="grid grid-cols-3 gap-3 items-end">
-            {[
-              { ...top3[1], em: "🥈", h: "120px", c: "#94A3B8" },
-              { ...top3[0], em: "👑", h: "150px", c: "#F59E0B" },
-              { ...top3[2], em: "🥉", h: "100px", c: "#B45309" },
-            ].map((p) => (
-              <div key={p.rank} className="flex flex-col items-center">
-                <div className="text-[34px] mb-2">{p.em}</div>
-                <div
-                  className="w-14 h-14 rounded-xl mb-2 flex items-center justify-center font-mono text-[15px] font-bold border-2"
-                  style={{
-                    background: `${p.c}1a`,
-                    borderColor: `${p.c}66`,
-                    color: p.c,
-                  }}
-                >
-                  {p.name.slice(0, 2).toUpperCase()}
-                </div>
-                <div className="text-[12.5px] font-semibold font-mono mb-0.5">
-                  {p.name}
-                </div>
-                <div className="font-mono text-[10px] text-t3 mb-3">
-                  {p.rank_name} · Lv.{p.level}
-                </div>
-                <div
-                  className="w-full p-3 text-center rounded-t-lg border border-b-0"
-                  style={{
-                    height: p.h,
-                    background: `${p.c}11`,
-                    borderColor: `${p.c}33`,
-                  }}
-                >
-                  <div className="eyebrow mb-1">#{p.rank}</div>
-                  <div
-                    className="font-mono text-[18px] font-bold mt-2"
-                    style={{ color: p.c }}
-                  >
-                    {p.xp.toLocaleString()}
-                  </div>
-                  <div className="text-[10px] text-t3 mt-1">XP</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Panel>
-
-        {/* Right side: Your rank + Distribution */}
-        <div className="col-span-4 flex flex-col gap-3">
-          <Panel
-            eyebrow="あなたの順位"
-            title="現在のスタンディング"
-            icon="📍"
-            iconBg="rgba(0,212,255,0.1)"
-          >
-            <div className="text-center py-2">
-              <div className="font-mono text-[36px] font-bold text-brand-cyan leading-none mb-1">
-                #248
-              </div>
-              <div className="text-[11px] text-t2 mb-3">
-                Top 2.9% · Lv.24 探索者
-              </div>
-              <div className="grid grid-cols-2 gap-1.5">
-                <div className="p-1.5 bg-surf2 border border-bd rounded text-center">
-                  <div className="font-mono text-[14px] font-bold text-brand-green">
-                    12,540
-                  </div>
-                  <div className="text-[9.5px] text-t3">XP</div>
-                </div>
-                <div className="p-1.5 bg-surf2 border border-bd rounded text-center">
-                  <div className="font-mono text-[14px] font-bold text-brand-amber">
-                    14 日
-                  </div>
-                  <div className="text-[9.5px] text-t3">連続</div>
-                </div>
-              </div>
-            </div>
-          </Panel>
-
-          <Panel
-            eyebrow="ランク分布"
-            title="グローバル統計"
-            icon={<IconChartBar size={13} stroke={1.8} />}
-            iconBg="rgba(139,92,246,0.1)"
-            iconColor="var(--p)"
-          >
-            <div className="space-y-1.5">
-              {[
-                ["🌱 初心者", 3420, "var(--g)", 40],
-                ["🔭 探索者", 2580, "var(--c)", 31],
-                ["🔬 解析者", 1450, "var(--a)", 17],
-                ["⚙️ オペレーター", 620, "var(--p)", 7],
-                ["🦅 ハンター", 280, "var(--r)", 3],
-                ["💀 エキスパート", 70, "var(--pink)", 1],
-              ].map(([n, c, col, pct]) => (
-                <div key={String(n)} className="flex items-center gap-2">
-                  <span className="text-[10px] text-t2 w-[88px]">{n}</span>
-                  <div className="flex-1 h-1 bg-surf3 rounded-full overflow-hidden">
-                    <div
-                      className="h-full"
-                      style={{
-                        width: `${pct as number}%`,
-                        background: col as string,
-                      }}
-                    />
-                  </div>
-                  <span className="font-mono text-[9.5px] text-t3 w-9 text-right">
-                    {c as number}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </Panel>
+    <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+      <header className="mb-6">
+        <div className="eyebrow mb-1">LEADERBOARD · GLOBAL RANKING</div>
+        <h1 className="text-[22px] sm:text-[28px] font-bold tracking-[-0.02em] mb-2">ランキング</h1>
+        <div className="text-[13px] text-t3 font-mono break-words">
+          {MOCK_LEADERS.length}+ ハンター · あなたの順位 <span className="text-brand-purple font-bold">#248</span>
         </div>
+      </header>
 
-        {/* Full leaderboard table (cols 1-12) */}
-        <Panel
-          eyebrow="フルランキング"
-          title="トップ 10"
-          icon={<IconUsers size={13} stroke={1.8} />}
-          iconBg="rgba(34,197,94,0.1)"
-          iconColor="var(--g)"
-          className="col-span-12"
-          right={<LivePill size="sm" />}
-          noPadding
-        >
-          <table className="w-full">
-            <thead>
-              <tr>
-                {["順位", "ユーザー", "ランク", "Lv", "XP 合計", "解答", "連続日数", "今週変動"].map(
-                  (h) => (
-                    <th
-                      key={h}
-                      className="text-left px-3.5 py-2.5 text-[9.5px] font-mono font-semibold text-t3 border-b border-bd uppercase tracking-[0.06em]"
-                    >
-                      {h}
-                    </th>
-                  )
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {MOCK_LEADERS.map((u) => {
-                const dn = parseInt(u.delta);
-                const dColor = dn > 0 ? "var(--g)" : dn < 0 ? "var(--r)" : "var(--t3)";
-                return (
-                  <tr
-                    key={u.rank}
-                    className="hover:bg-surf2 transition-colors cursor-pointer"
-                  >
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span
-                        className="font-mono text-[14px] font-bold"
-                        style={{
-                          color:
-                            u.rank === 1
-                              ? "var(--a)"
-                              : u.rank <= 3
-                              ? "#94A3B8"
-                              : "var(--t3)",
-                        }}
+      {/* Tab */}
+      <div className="flex items-center gap-3 mb-4 overflow-x-auto pb-1 border-b -mx-4 px-4 sm:mx-0 sm:px-0"
+        style={{ borderColor: "var(--bd)", scrollbarWidth: "none" }}>
+        {["全期間", "今月", "今週", "今日"].map((s, i) => (
+          <button
+            key={s}
+            className="flex-shrink-0 py-2 text-[13px] font-mono transition-colors"
+            style={{
+              color: i === 1 ? "var(--p)" : "var(--t3)",
+              fontWeight: i === 1 ? 600 : 400,
+              borderBottom: i === 1 ? "2px solid var(--p)" : "2px solid transparent",
+            }}
+          >
+            {s}
+          </button>
+        ))}
+      </div>
+
+      {/* Top 3 Podium — モバイルでも見える */}
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+        {MOCK_LEADERS.slice(0, 3).map((u, i) => {
+          const color = i === 0 ? "#FFD700" : i === 1 ? "#C0C0C0" : "#CD7F32";
+          return (
+            <div
+              key={u.rank}
+              className="rounded-lg p-3 sm:p-4 border text-center min-w-0"
+              style={{
+                background: `linear-gradient(180deg, ${color}1a, ${color}05 60%, var(--surf))`,
+                borderColor: `${color}55`,
+              }}
+            >
+              <div className="text-[28px] sm:text-[32px] leading-none mb-1.5">
+                {MEDAL[u.rank]}
+              </div>
+              <div className="text-[12px] sm:text-[13px] font-bold truncate mb-0.5">
+                {u.name}
+              </div>
+              <div className="font-mono text-[12px] sm:text-[13px] font-bold" style={{ color }}>
+                {(u.xp / 1000).toFixed(1)}k
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── デスクトップ:テーブル ── */}
+      <div className="hidden sm:block overflow-x-auto rounded-lg border" style={{ borderColor: "var(--bd)" }}>
+        <table className="w-full text-[13px]">
+          <thead>
+            <tr className="text-left" style={{ background: "var(--surf2)" }}>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold w-12">#</th>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold">Hunter</th>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold">Rank</th>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold text-right">XP</th>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold text-right">Solves</th>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold text-right">Streak</th>
+              <th className="px-3 py-2.5 font-mono text-[11px] uppercase tracking-wider text-t3 font-semibold text-right w-16">Δ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {MOCK_LEADERS.map((u) => {
+              const positive = u.delta.startsWith("+");
+              return (
+                <tr
+                  key={u.rank}
+                  className="border-t hover:bg-surf2 transition-colors"
+                  style={{ borderColor: "var(--bd)" }}
+                >
+                  <td className="px-3 py-3 font-mono font-bold text-t1">{u.rank}</td>
+                  <td className="px-3 py-3">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div
+                        className="w-7 h-7 rounded-md flex items-center justify-center font-mono text-[10px] font-bold text-white flex-shrink-0"
+                        style={{ background: "linear-gradient(135deg, #A855F7, #22C55E)" }}
                       >
-                        #{u.rank}
-                      </span>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <div className="flex items-center gap-2.5">
-                        <div
-                          className="w-7 h-7 rounded-md flex items-center justify-center font-mono text-[10px] font-bold border"
-                          style={{
-                            background: "rgba(34,197,94,0.15)",
-                            borderColor: "rgba(34,197,94,0.3)",
-                            color: "var(--g)",
-                          }}
-                        >
-                          {u.name.slice(0, 2).toUpperCase()}
-                        </div>
-                        <span className="font-mono text-[12px] font-semibold">
-                          {u.name}
-                        </span>
+                        {u.name.slice(0, 2).toUpperCase()}
                       </div>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span className="text-[11px] text-t2">{u.rank_name}</span>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span className="font-mono text-[11.5px] font-semibold text-brand-cyan">
-                        {u.level}
-                      </span>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span className="font-mono text-[12px] font-bold text-brand-green">
-                        {u.xp.toLocaleString()}
-                      </span>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span className="font-mono text-[11px] text-t1">{u.solves}</span>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span className="font-mono text-[11px] text-brand-amber">
-                        🔥 {u.streak}
-                      </span>
-                    </td>
-                    <td className="px-3.5 py-2 border-b border-bd">
-                      <span className="font-mono text-[11px] font-semibold" style={{ color: dColor }}>
-                        {u.delta === "0" ? "—" : u.delta.startsWith("-") ? `↓ ${u.delta.slice(1)}` : `↑ ${u.delta.slice(1)}`}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </Panel>
+                      <span className="font-medium truncate">{u.name}</span>
+                    </div>
+                  </td>
+                  <td className="px-3 py-3 text-t2 whitespace-nowrap">{u.rank_name}</td>
+                  <td className="px-3 py-3 font-mono font-bold text-right">{u.xp.toLocaleString()}</td>
+                  <td className="px-3 py-3 font-mono text-right text-t2">{u.solves}</td>
+                  <td className="px-3 py-3 font-mono text-right text-brand-amber">🔥 {u.streak}</td>
+                  <td className="px-3 py-3 font-mono text-right font-bold"
+                    style={{ color: positive ? "var(--g)" : "var(--r)" }}>
+                    {u.delta}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {/* ── モバイル:コンパクトリスト ── */}
+      <ul className="sm:hidden divide-y" style={{ borderColor: "var(--bd)" }}>
+        {MOCK_LEADERS.map((u) => {
+          const positive = u.delta.startsWith("+");
+          return (
+            <li key={u.rank} className="py-3 flex items-center gap-3 min-w-0">
+              <span className="font-mono text-[14px] font-bold text-t1 w-7 flex-shrink-0 text-right">
+                {u.rank}
+              </span>
+              <div
+                className="w-9 h-9 rounded-md flex items-center justify-center font-mono text-[11px] font-bold text-white flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #A855F7, #22C55E)" }}
+              >
+                {u.name.slice(0, 2).toUpperCase()}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[14px] font-semibold truncate">{u.name}</div>
+                <div className="font-mono text-[11px] text-t3 truncate">
+                  {u.rank_name} · 🔥 {u.streak}
+                </div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <div className="font-mono text-[13px] font-bold">{u.xp.toLocaleString()}</div>
+                <div className="font-mono text-[11px] font-bold"
+                  style={{ color: positive ? "var(--g)" : "var(--r)" }}>
+                  {u.delta}
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* 自分の順位(常時表示) */}
+      <div
+        className="mt-6 rounded-lg p-3 sm:p-4 border-2 flex items-center gap-3 min-w-0"
+        style={{
+          background: "linear-gradient(135deg, rgba(168,85,247,0.1), rgba(34,197,94,0.05))",
+          borderColor: "rgba(168,85,247,0.4)",
+        }}
+      >
+        <span className="font-mono text-[16px] font-bold text-brand-purple w-12 flex-shrink-0 text-right">
+          #248
+        </span>
+        <div
+          className="w-10 h-10 rounded-lg flex items-center justify-center font-mono text-[12px] font-bold text-white flex-shrink-0"
+          style={{ background: "linear-gradient(135deg, #A855F7, #22C55E)" }}
+        >
+          0X
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="text-[14px] font-bold truncate">0xFreedom <span className="text-[11px] text-t3 font-normal">(あなた)</span></div>
+          <div className="font-mono text-[11px] text-t3">
+            🦅 ハンター · 🔥 14 · 上位 1.2%
+          </div>
+        </div>
+        <div className="text-right flex-shrink-0">
+          <div className="font-mono text-[13px] font-bold">12,540</div>
+          <div className="font-mono text-[11px] font-bold text-brand-green">+5</div>
+        </div>
       </div>
     </div>
   );

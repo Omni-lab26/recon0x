@@ -35,10 +35,10 @@ export default function LabPage() {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* ROW 1: Active mission (cols 1-8) + Env status (cols 9-12) */}
         <div
-          className="col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
+          className="md:col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg,rgba(34,197,94,0.05),transparent 60%), var(--surf)",
@@ -61,7 +61,7 @@ export default function LabPage() {
           <p className="text-[12.5px] text-t2 leading-[1.6] mb-4 max-w-[640px]">
             ターゲット 10.10.10.42 に nmap を実行してオープンポートを特定し、HTTPS サーバの隠しエンドポイントを発見せよ。最終的に管理画面に到達できればフラグ取得。
           </p>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <MiniStat label="必要スキル" value="Network" color="var(--g)" icon="🎯" />
             <MiniStat label="推奨ツール" value="nmap/curl" color="var(--c)" icon="🛠" />
             <MiniStat label="想定時間" value="45分" color="var(--p)" icon="⏱" />
@@ -75,7 +75,7 @@ export default function LabPage() {
           icon={<IconServer size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-4"
+          className="md:col-span-4"
           right={<LivePill size="sm" label="ONLINE" />}
         >
           <div className="space-y-1.5">
@@ -111,7 +111,7 @@ export default function LabPage() {
           icon={<IconTerminal2 size={13} stroke={1.8} />}
           iconBg="rgba(139,92,246,0.1)"
           iconColor="var(--p)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="space-y-1.5">
             {MOCK_LABS.map((l) => {
@@ -161,7 +161,7 @@ export default function LabPage() {
           </div>
         </Panel>
 
-        <div className="col-span-5 flex flex-col gap-3">
+        <div className="md:col-span-5 flex flex-col gap-3">
           <Panel
             eyebrow="ターゲット環境"
             title="ブラウザシミュレータ"
@@ -273,7 +273,7 @@ export default function LabPage() {
         </div>
 
         {/* Right intelligence rail (cols 9-12) */}
-        <div className="col-span-4 flex flex-col gap-3">
+        <div className="md:col-span-4 flex flex-col gap-3">
           <Panel
             eyebrow="目標"
             title="成功条件"

@@ -111,10 +111,10 @@ export default function JobsPage() {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* ROW 1: Market value (cols 1-8) + Skill match (cols 9-12) */}
         <div
-          className="col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
+          className="md:col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg,rgba(34,197,94,0.05),rgba(0,212,255,0.03) 60%, var(--surf))",
@@ -157,7 +157,7 @@ export default function JobsPage() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-2 pt-4 border-t border-bd mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4 border-t border-bd mt-4">
             <MiniStat label="Web セキュリティ" value="75%" color="var(--g)" delta="+¥1.8M" deltaColor="var(--g)" />
             <MiniStat label="ペネトレ" value="45%" color="var(--c)" delta="+¥2.1M" deltaColor="var(--g)" />
             <MiniStat label="クラウド" value="20%" color="var(--a)" delta="+¥1.5M" deltaColor="var(--g)" />
@@ -170,7 +170,7 @@ export default function JobsPage() {
           title="あなたに合う案件"
           icon="🎯"
           iconBg="rgba(34,197,94,0.1)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="text-center py-2 mb-3 border-b border-bd">
             <div className="font-mono text-[32px] font-bold text-brand-green leading-none mb-1">
@@ -208,7 +208,7 @@ export default function JobsPage() {
         </Panel>
 
         {/* ROW 2: Filter (cols 1-12) */}
-        <Panel className="col-span-12" hover={false}>
+        <Panel className="md:col-span-12" hover={false}>
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="font-mono text-[9.5px] text-t3 mr-2">TYPE:</span>
             {[
@@ -263,7 +263,7 @@ export default function JobsPage() {
           icon={<IconBriefcase size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-8"
+          className="md:col-span-8"
           right={<LivePill size="sm" label="LIVE" />}
         >
           <div className="space-y-2">
@@ -351,7 +351,7 @@ export default function JobsPage() {
           </div>
         </Panel>
 
-        <div className="col-span-4 flex flex-col gap-3">
+        <div className="md:col-span-4 flex flex-col gap-3">
           <Panel
             eyebrow="フリーランス案件"
             title="短期 · スポット"

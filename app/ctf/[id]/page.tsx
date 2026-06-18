@@ -4,6 +4,7 @@ import { MiniStat } from "@/components/ui/MiniStat";
 import { Sparkline } from "@/components/ui/Sparkline";
 import { LivePill } from "@/components/home/LivePill";
 import { MOCK_CTFS } from "@/lib/mock-data";
+import { MobileCtfDetail } from "@/components/mobile/MobileCtfDetail";
 import {
   IconArrowLeft,
   IconFlag,
@@ -36,7 +37,18 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
       : "var(--r)";
 
   return (
-    <div className="max-w-[1400px] mx-auto">
+    <>
+      <MobileCtfDetail
+        id={challenge.id}
+        title={challenge.title}
+        category={meta.name}
+        difficulty={challenge.difficulty}
+        points={challenge.points}
+        solves={challenge.solves}
+        description={challenge.description}
+        color={meta.color}
+      />
+      <div className="hidden lg:block max-w-[1400px] mx-auto">
       <a
         href="/ctf"
         className="inline-flex items-center gap-1.5 text-[12px] text-t2 hover:text-t1 transition mb-3 no-underline"
@@ -60,10 +72,10 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* ROW 1: Mission briefing (cols 1-8) + Difficulty intel (cols 9-12) */}
         <div
-          className="col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
+          className="md:col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg,rgba(139,92,246,0.05),transparent 60%), var(--surf)",
@@ -128,7 +140,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
             <div>{"}"}</div>
           </div>
 
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <MiniStat label="必要スキル" value="Pwn" color={meta.color} icon="🎯" />
             <MiniStat label="推奨ツール" value="GDB/pwntools" color="var(--c)" icon="🛠" />
             <MiniStat label="想定時間" value="45分" color="var(--p)" icon="⏱" />
@@ -141,7 +153,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           title="解答難易度の分析"
           icon="📊"
           iconBg="rgba(245,158,11,0.1)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="space-y-2">
             {[
@@ -171,7 +183,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           icon={<IconDownload size={13} stroke={1.8} />}
           iconBg="rgba(0,212,255,0.1)"
           iconColor="var(--c)"
-          className="col-span-5"
+          className="md:col-span-5"
         >
           <div className="eyebrow mb-1.5">配布ファイル</div>
           <div className="space-y-1.5">
@@ -207,9 +219,9 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           icon={<IconUsers size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
-          <div className="grid grid-cols-2 gap-1.5 mb-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mb-3">
             <MiniStat label="総解答" value={`${challenge.solves}`} color="var(--g)" />
             <MiniStat label="正答率" value="47%" color="var(--c)" />
             <MiniStat label="平均" value="42分" color="var(--p)" />
@@ -231,10 +243,10 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           icon={<IconFlag size={13} stroke={1.8} />}
           iconBg="rgba(245,158,11,0.1)"
           iconColor="var(--a)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="eyebrow mb-1.5">あなたの試行</div>
-          <div className="grid grid-cols-3 gap-1.5 mb-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 mb-3">
             <MiniStat label="試行" value="0" color="var(--t1)" />
             <MiniStat label="残ヒント" value="3/3" color="var(--p)" />
             <MiniStat label="経過" value="00:00" color="var(--c)" />
@@ -262,7 +274,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           icon={<IconBookmark size={13} stroke={1.8} />}
           iconBg="rgba(0,212,255,0.1)"
           iconColor="var(--c)"
-          className="col-span-5"
+          className="md:col-span-5"
         >
           <div className="space-y-1.5">
             {[
@@ -294,7 +306,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           icon={<IconBulb size={13} stroke={1.8} />}
           iconBg="rgba(139,92,246,0.1)"
           iconColor="var(--p)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="space-y-1.5">
             {[
@@ -329,7 +341,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           icon={<IconHistory size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="space-y-2 relative pl-3">
             <div
@@ -355,6 +367,7 @@ export default function CTFDetailPage({ params }: { params: { id: string } }) {
           </div>
         </Panel>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -113,7 +113,7 @@
 
   /* ターミナル・コードブロックは常にダーク */
   --terminal-bg: #0A090D;
-  --terminal-text: #F4F4F5;
+  --terminal-text: #86E8A6;
   --code-bg: #0A090D;
 
   --orb1: rgba(168, 85, 247, 0.08);

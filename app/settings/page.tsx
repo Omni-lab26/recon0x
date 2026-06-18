@@ -25,14 +25,14 @@ export default function SettingsPage() {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* Sidebar nav (cols 1-3) */}
         <Panel
           eyebrow="セクション"
           title="設定一覧"
           icon="⚙️"
           iconBg="rgba(0,212,255,0.1)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="space-y-1">
             {[

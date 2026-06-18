@@ -4,6 +4,7 @@ import { MiniStat } from "@/components/ui/MiniStat";
 import { Sparkline } from "@/components/ui/Sparkline";
 import { FIELDS, RANKS } from "@/lib/tokens";
 import { LivePill } from "@/components/home/LivePill";
+import { MobileLearnPage } from "@/components/mobile/MobileLearnPage";
 import {
   IconRoute,
   IconArrowRight,
@@ -17,7 +18,9 @@ import {
 
 export default function LearnPage() {
   return (
-    <div className="max-w-[1400px] mx-auto">
+    <>
+      <MobileLearnPage />
+      <div className="hidden lg:block max-w-[1400px] mx-auto">
       <OpsHeader
         eyebrow="LEARNING PATHS · MISSION CONTROL"
         title={
@@ -38,10 +41,10 @@ export default function LearnPage() {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* ROW 1: Progress overview (cols 1-8) + Next mission (cols 9-12) */}
         <div
-          className="col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
+          className="md:col-span-8 p-5 rounded-[11px] border relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg,rgba(34,197,94,0.05),transparent 60%), var(--surf)",
@@ -112,7 +115,7 @@ export default function LearnPage() {
           </div>
 
           {/* Mini stats grid */}
-          <div className="grid grid-cols-4 gap-2 pt-4 border-t border-bd">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-4 border-t border-bd">
             <MiniStat
               label="完了ステップ"
               value="0 / 35"
@@ -147,7 +150,7 @@ export default function LearnPage() {
           icon={<IconBolt size={13} stroke={1.8} />}
           iconBg="rgba(0,212,255,0.1)"
           iconColor="var(--c)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div
             className="p-3 rounded-lg border mb-2"
@@ -203,7 +206,7 @@ export default function LearnPage() {
           icon={<IconRoute size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-5"
+          className="md:col-span-5"
         >
           <div className="space-y-1.5">
             {FIELDS.map((f) => (
@@ -255,7 +258,7 @@ export default function LearnPage() {
           icon={<IconChartRadar size={13} stroke={1.8} />}
           iconBg="rgba(139,92,246,0.1)"
           iconColor="var(--p)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="space-y-2">
             {FIELDS.slice(0, 6).map((f) => (
@@ -297,7 +300,7 @@ export default function LearnPage() {
           icon={<IconCalendar size={13} stroke={1.8} />}
           iconBg="rgba(245,158,11,0.1)"
           iconColor="var(--a)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="text-center py-2 mb-2">
             <div className="font-mono text-[24px] font-bold text-t3 leading-none mb-1">
@@ -333,7 +336,7 @@ export default function LearnPage() {
           icon="$"
           iconBg="rgba(34,197,94,0.12)"
           iconColor="var(--g)"
-          className="col-span-8"
+          className="md:col-span-8"
           right={
             <div className="flex items-center gap-2">
               <span className="font-mono text-[9.5px] text-t3">完了 0/5</span>
@@ -506,6 +509,7 @@ export default function LearnPage() {
           </Panel>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

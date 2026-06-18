@@ -26,10 +26,10 @@ export default function ProfilePage() {
         ]}
       />
 
-      <div className="grid grid-cols-12 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
         {/* Profile hero (cols 1-8) */}
         <div
-          className="col-span-8 p-6 rounded-[11px] border"
+          className="md:col-span-8 p-6 rounded-[11px] border"
           style={{
             background: "linear-gradient(135deg,rgba(34,197,94,0.04),transparent 60%), var(--surf)",
             borderColor: "var(--bd2)",
@@ -78,7 +78,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Quick stats (cols 9-12) */}
-        <div className="col-span-4 grid grid-cols-2 gap-2">
+        <div className="md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
           {[
             ["XP", "—", "var(--g)"],
             ["ランク", "—", "var(--a)"],
@@ -107,7 +107,7 @@ export default function ProfilePage() {
           icon={<IconChartRadar size={13} stroke={1.8} />}
           iconBg="rgba(139,92,246,0.1)"
           iconColor="var(--p)"
-          className="col-span-6"
+          className="md:col-span-6"
         >
           <div className="space-y-2.5">
             {FIELDS.map((f) => (
@@ -152,7 +152,7 @@ export default function ProfilePage() {
           icon={<IconClock size={13} stroke={1.8} />}
           iconBg="rgba(0,212,255,0.1)"
           iconColor="var(--c)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
           <div className="text-center py-8">
             <div className="text-2xl opacity-40 mb-2">📜</div>
@@ -170,9 +170,9 @@ export default function ProfilePage() {
           icon={<IconTrophy size={13} stroke={1.8} />}
           iconBg="rgba(245,158,11,0.1)"
           iconColor="var(--a)"
-          className="col-span-3"
+          className="md:col-span-3"
         >
-          <div className="grid grid-cols-3 gap-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5">
             {Array.from({ length: 9 }).map((_, i) => (
               <div
                 key={i}
@@ -195,7 +195,7 @@ export default function ProfilePage() {
           icon={<IconBookmark size={13} stroke={1.8} />}
           iconBg="rgba(34,197,94,0.1)"
           iconColor="var(--g)"
-          className="col-span-8"
+          className="md:col-span-8"
           noPadding
         >
           <table className="w-full">
@@ -237,7 +237,7 @@ export default function ProfilePage() {
           title="ロードマップ"
           icon="📊"
           iconBg="rgba(0,212,255,0.1)"
-          className="col-span-4"
+          className="md:col-span-4"
         >
           <div className="space-y-2">
             {FIELDS.slice(0, 5).map((f) => (

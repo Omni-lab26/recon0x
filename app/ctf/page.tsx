@@ -1,3 +1,4 @@
+import { MobileCtfPage } from "@/components/mobile/MobileCtfPage";
 import { OpsHeader } from "@/components/ui/OpsHeader";
 import { Panel } from "@/components/ui/Panel";
 import { MiniStat } from "@/components/ui/MiniStat";
@@ -47,7 +48,9 @@ export default function CTFPage() {
   );
 
   return (
-    <div className="max-w-[1400px] mx-auto">
+    <>
+      <MobileCtfPage />
+      <div className="hidden lg:block max-w-[1400px] mx-auto">
       <OpsHeader
         eyebrow="CTF · CAPTURE THE FLAG ARENA"
         title={<>攻撃と防御を、競技で学ぶ。</>}
@@ -527,6 +530,7 @@ export default function CTFPage() {
           </Panel>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
