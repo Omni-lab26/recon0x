@@ -3,6 +3,7 @@ import MermaidChart from "@/components/MermaidChart";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import rehypeHighlight from "rehype-highlight";
 import {
   IconArrowLeft,
   IconClock,
@@ -24,7 +25,7 @@ const MDX_COMPONENTS = {
       <pre
         {...props}
         className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
-        style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)", color: "#86E8A6" }}
+        style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)" }}
       />
     );
   },
@@ -34,7 +35,7 @@ const MDX_COMPONENTS = {
       return (
         <code
           className={"font-mono text-[13px] leading-[1.7] " + (className ?? "")}
-          style={{ color: "#86E8A6", background: "transparent" }}
+          style={{ background: "transparent" }}
           {...props}
         >
           {children}
@@ -243,6 +244,11 @@ export default async function ArticleDetailPage({
         <MDXRemote
           source={article.content.replace(/\/articles\/__SLUG__\//g, `/articles/${article.slug}/`)}
           components={MDX_COMPONENTS}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [rehypeHighlight],
+            },
+          }}
         />
       </div>
 

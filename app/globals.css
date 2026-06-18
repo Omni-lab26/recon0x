@@ -429,3 +429,26 @@ svg[id^="mermaid"] {
 .mermaid svg {
   background: transparent !important;
 }
+
+/* ── highlight.js テーマ (Tokyo Night) ── */
+.hljs { background: transparent; color: #a9b1d6; }
+.hljs-keyword { color: #bb9af7; }
+.hljs-built_in { color: #7dcfff; }
+.hljs-type { color: #7dcfff; }
+.hljs-literal { color: #ff9e64; }
+.hljs-number { color: #ff9e64; }
+.hljs-string { color: #9ece6a; }
+.hljs-comment { color: #565f89; font-style: italic; }
+.hljs-function { color: #7aa2f7; }
+.hljs-title { color: #7aa2f7; }
+.hljs-params { color: #e0af68; }
+.hljs-attr { color: #73daca; }
+.hljs-variable { color: #c0caf5; }
+.hljs-operator { color: #89ddff; }
+.hljs-punctuation { color: #89ddff; }
+.hljs-tag { color: #f7768e; }
+.hljs-name { color: #f7768e; }
+.hljs-property { color: #73daca; }
+.hljs-meta { color: #7dcfff; }
+.hljs-deletion { color: #f7768e; }
+.hljs-addition { color: #9ece6a; }
