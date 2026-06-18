@@ -1,4 +1,5 @@
 import { getArticleBySlug, resolveArticleImage } from "@/lib/articles";
+import MermaidChart from "@/components/MermaidChart";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -12,20 +13,44 @@ import {
 // ── MDX 内で使えるカスタムコンポーネント ──────────────
 const MDX_COMPONENTS = {
   // コードブロック — ダークテーマ固定
-  pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      {...props}
-      className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
-      style={{ background: "#0d1117", border: "1px solid #30363d" }}
-    />
-  ),
-  code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      {...props}
-      className="font-mono text-[12.5px] px-1.5 py-0.5 rounded break-all"
-      style={{ background: "var(--surf2)", color: "var(--c)", border: "1px solid var(--bd)" }}
-    />
-  ),
+  pre: (props: React.HTMLAttributes<HTMLPreElement> & { children?: React.ReactElement }) => {
+    const child = props.children as React.ReactElement<{ className?: string; children?: string }>;
+    const className = child?.props?.className ?? "";
+    if (className.includes("mermaid") || className === "language-mermaid") {
+      const chart = child?.props?.children ?? "";
+      return <MermaidChart chart={chart} />;
+    }
+    return (
+      <pre
+        {...props}
+        className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
+        style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)", color: "#86E8A6" }}
+      />
+    );
+  },
+  code: ({ children, className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    const isBlock = !className;
+    if (isBlock) {
+      return (
+        <code
+          className={"font-mono text-[13px] leading-[1.7] " + (className ?? "")}
+          style={{ color: "#86E8A6", background: "transparent" }}
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    }
+    return (
+      <code
+        className="font-mono text-[12.5px] px-1.5 py-0.5 rounded break-all"
+        style={{ background: "rgba(134,232,166,0.08)", color: "#86E8A6", border: "1px solid rgba(134,232,166,0.25)" }}
+        {...props}
+      >
+        {children}
+      </code>
+    );
+  },
   // 見出し
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 {...props} className="text-[28px] font-bold mt-10 mb-4 tracking-[-0.02em]" />
