@@ -4,7 +4,7 @@ import matter from "gray-matter";
 const GITHUB_USER = "Omni-lab26";
 const GITHUB_REPO = "recon0x-content";
 const GITHUB_BRANCH = "main";
-const REVALIDATE = 3600; // 1 時間キャッシュ
+const REVALIDATE = 60; // 1 時間キャッシュ
 
 // GitHub Raw ベース URL
 const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}`;
