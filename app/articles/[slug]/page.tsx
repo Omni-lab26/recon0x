@@ -25,7 +25,7 @@ const MDX_COMPONENTS = {
       <pre
         {...props}
         className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
-        style={{ background: "#1a1b2e", border: "1px solid var(--bd)", borderRadius: "8px" }}
+        style={{ background: "#1a1b2e", border: "1px solid var(--bd)", borderRadius: "8px", overflow: "hidden" }}
       />
     );
   },
@@ -35,7 +35,7 @@ const MDX_COMPONENTS = {
       return (
         <code
           className={"font-mono text-[13px] leading-[1.7] " + (className ?? "")}
-          style={{ background: "transparent" }}
+          style={{ background: "transparent", color: "inherit" }}
           {...props}
         >
           {children}
