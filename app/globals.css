@@ -431,7 +431,7 @@ svg[id^="mermaid"] {
 }
 
 /* ── highlight.js テーマ (Tokyo Night) ── */
-.hljs { background: #1a1b2e; color: #a9b1d6; }
+.hljs { background: transparent; color: #a9b1d6; }
 .hljs-keyword { color: #bb9af7; }
 .hljs-built_in { color: #7dcfff; }
 .hljs-type { color: #7dcfff; }

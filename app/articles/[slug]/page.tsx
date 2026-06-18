@@ -25,7 +25,7 @@ const MDX_COMPONENTS = {
       <pre
         {...props}
         className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
-        style={{ background: "#1a1b2e", border: "1px solid var(--bd)", borderRadius: "8px", overflow: "hidden" }}
+        style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)" }}
       />
     );
   },
@@ -229,7 +229,7 @@ export default async function ArticleDetailPage({
           <button
             aria-label="ブックマーク"
             className="ml-auto w-9 h-9 rounded-lg flex items-center justify-center text-t3 hover:text-brand-amber transition"
-            style={{ background: "var(--surf2)", border: "1px solid var(--bd)" }}
+            style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)" }}
           >
             <IconBookmark size={15} stroke={1.6} />
           </button>
