@@ -4,8 +4,6 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import rehypeHighlight from "rehype-highlight";
-import rehypeHighlight from "rehype-highlight";
-import rehypeHighlight from "rehype-highlight";
 import {
   IconArrowLeft,
   IconClock,
