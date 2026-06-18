@@ -25,7 +25,7 @@ const MDX_COMPONENTS = {
       <pre
         {...props}
         className="rounded-lg p-4 overflow-x-auto text-[13px] leading-[1.7] my-5"
-        style={{ background: "var(--terminal-bg)", border: "1px solid var(--bd)" }}
+        style={{ background: "#1a1b2e", border: "1px solid var(--bd)", borderRadius: "8px" }}
       />
     );
   },
