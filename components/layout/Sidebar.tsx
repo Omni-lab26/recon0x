@@ -51,7 +51,7 @@ export function Sidebar({ user }: SidebarProps) {
 
   return (
     <aside
-      className="hidden lg:flex w-[220px] min-w-[220px] flex-col border-r sticky top-0 self-start"
+      className="hidden lg:flex w-[220px] min-w-[220px] flex-col border-r fixed top-0 left-0 overflow-y-auto"
       style={{
         background: "var(--sidebar-bg)",
         backdropFilter: "blur(24px)",
