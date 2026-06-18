@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import rehypeHighlight from "rehype-highlight";
 import rehypeHighlight from "rehype-highlight";
+import rehypeHighlight from "rehype-highlight";
 import {
   IconArrowLeft,
   IconClock,
@@ -245,6 +246,11 @@ export default async function ArticleDetailPage({
         <MDXRemote
           source={article.content.replace(/\/articles\/__SLUG__\//g, `/articles/${article.slug}/`)}
           components={MDX_COMPONENTS}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [rehypeHighlight],
+            },
+          }}
           options={{
             mdxOptions: {
               rehypePlugins: [rehypeHighlight],
