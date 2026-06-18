@@ -172,6 +172,46 @@ body { min-height: 100vh; position: relative; }
   .safe-pb { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
 }
 
+/* main の bottom padding — モバイルでは Bottom Nav 分を確保 */
+.app-main-pb {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 96px);
+}
+@media (min-width: 1024px) {
+  .app-main-pb {
+    padding-bottom: 2rem;
+  }
+}
+
+/* ── 横スクロール完全禁止(個別 overflow-x-auto は許可) ── */
+html, body { overflow-x: hidden; max-width: 100vw; }
+
+/* Flex 子要素のオーバーフロー防止 */
+.min-w-0 { min-width: 0 !important; }
+
+/* 長文 break(意図しない overflow を防ぐ) */
+.break-words { overflow-wrap: anywhere; word-break: break-word; }
+
+/* スクロールバー非表示クラス */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* line-clamp utilities */
+.line-clamp-1, .line-clamp-2, .line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-1 { -webkit-line-clamp: 1; }
+.line-clamp-2 { -webkit-line-clamp: 2; }
+.line-clamp-3 { -webkit-line-clamp: 3; }
+
+/* タップ時のスケール演出 */
+@media (hover: none) and (pointer: coarse) {
+  .active\:scale-\[0\.99\]:active { transform: scale(0.99); }
+  .active\:scale-\[0\.98\]:active { transform: scale(0.98); }
+  .active\:scale-\[0\.97\]:active { transform: scale(0.97); }
+}
+
 /* オーブ */
 body::before {
   content: '';
@@ -359,3 +399,33 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 :root.theme-cyber .text-brand-red { color: #FF3355; }
 :root.theme-cyber .text-brand-purple { color: #BB66FF; }
 :root.theme-cyber .text-brand-pink { color: #FF44AA; }
+
+/* Mermaid 図のダークテーマ対応 */
+.mermaid,
+pre.mermaid,
+[class*="mermaid"] {
+  background: transparent !important;
+}
+
+svg[id^="mermaid"] {
+  background: transparent !important;
+}
+
+.mermaid svg {
+  background: transparent !important;
+}
+
+/* Mermaid 図のダークテーマ対応 */
+.mermaid,
+pre.mermaid,
+[class*="mermaid"] {
+  background: transparent !important;
+}
+
+svg[id^="mermaid"] {
+  background: transparent !important;
+}
+
+.mermaid svg {
+  background: transparent !important;
+}
