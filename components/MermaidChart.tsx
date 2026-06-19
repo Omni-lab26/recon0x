@@ -35,5 +35,22 @@ export default function MermaidChart({ chart }: MermaidChartProps) {
     };
     render();
   }, [chart]);
-  return <div ref={ref} className="my-6 rounded-xl p-4 overflow-x-auto" style={{ background: "#0a0a0f", border: "1px solid #2a2a3a" }} />;
+  return (
+<div className="diagram-card my-8">
+  <div className="diagram-grid">
+    <div ref={ref} className="diagram-visual rounded-xl p-4 overflow-x-auto" style={{ background: "#0a0a0f", border: "1px solid #2a2a3a" }} />
+    <aside className="diagram-explain">
+      <h4>Diagram Guide</h4>
+      <ul>
+        <li>左から右、上から下へフローを読む</li>
+        <li>ノードは処理や状態を表現</li>
+        <li>矢印はデータや制御の流れ</li>
+      </ul>
+    </aside>
+  </div>
+  <div className="diagram-note">
+    図の意味や補足説明を配置するためのエリアです。
+  </div>
+</div>
+);
 }

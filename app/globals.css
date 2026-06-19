@@ -474,3 +474,13 @@ svg[id^="mermaid"] {
 .hljs-meta { color: #7dcfff !important; }
 .hljs-deletion { color: #f7768e !important; }
 .hljs-addition { color: #9ece6a !important; }
+
+
+/* Diagram Layout */
+.diagram-card{margin:2rem 0}
+.diagram-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:1rem;align-items:start}
+.diagram-explain{border:1px solid var(--bd);background:var(--surf);border-radius:12px;padding:1rem}
+.diagram-explain h4{margin:0 0 .75rem;font-weight:700}
+.diagram-explain ul{padding-left:1.25rem}
+.diagram-note{margin-top:1rem;border-left:3px solid #A855F7;background:rgba(168,85,247,.08);padding:1rem;border-radius:8px}
+@media(max-width:900px){.diagram-grid{grid-template-columns:1fr}}
